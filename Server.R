@@ -141,43 +141,14 @@ predict_fun <- function(inputString, unigram.df, bigram.df, trigram.df, ngram_to
 shinyServer(
     function(input, output) {
         observe({
-                param <- input$text
-                prediction <- predict_fun(input$text, unigram.df, bigram.df, trigram.df, ngram_tokenizer)
-                output$text1 <- renderText({ 
-                    paste("Top Prediction:    ", prediction[1])
-                })
-                output$text2 <- renderText({ 
-                    paste("Second Prediction: ", prediction[2])
-                })
-                output$text3 <- renderText({ 
-                    paste("Third Prediction:  ", prediction[3])
-                })
-                output$text4 <- renderText({ 
-                    paste("Fourth Prediction:  ", prediction[4])
-                })
-                output$text5 <- renderText({ 
-                    paste("Fifth Prediction:  ", prediction[5])
-                })
+            param <- input$text
+            prediction <- predict_fun(input$text, unigram.df, bigram.df, trigram.df, ngram_tokenizer)
+            output$matrix <- renderTable({
                 
-            ##    smoke <- matrix(c(51,43,22,92,28,21,68,22,9),ncol=3,byrow=TRUE)
-              ##  colnames(o) <- c("High","Low","Middle")
-            ##    rownames(o) <- c("current","former","never")
-              ##  smoke <- as.table(smoke)
+                matrix <- matrix(prediction[1:10],nrow=5, ncol = 2)
                 
-                
-           ##     output$mytable = renderDataTable({
-             ##       mtcars
-               ## })
-                
-                output$matrix <- renderTable({
-                    
-                    matrix <- matrix(prediction[1:10],nrow=5, ncol = 2)
-                    
-                    colnames(matrix) <- c('Word','Probability')
-                    matrix })
-                
-                
-                
+                colnames(matrix) <- c('Word','Probability')
+                matrix })
                 
             }
       )    
