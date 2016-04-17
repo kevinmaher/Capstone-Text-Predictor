@@ -5,6 +5,7 @@ library(tidyr)
 ## set the work directory on local 
 setwd("C:/RStudio/capstone/final/en_US")
 
+## open saveddata
 sampleCorp <- readLines("samplecorpfilenames.txt")
 
 source("ngramstokenizer.R")
@@ -65,6 +66,7 @@ names(bigram.df) <- c("word1", "predicted", "frequency", "probability")
 names(trigram.df) <- c("word1", "word2", "predicted", "frequency", "probability")
 names(quadgram.df) <- c("word1", "word2", "word3","predicted", "frequency", "probability")
 
+##save all the ngrams for use in prediction
 save(unigram.df, bigram.df, trigram.df, quadgram.df,  file="allngrams.Rda")
 
 

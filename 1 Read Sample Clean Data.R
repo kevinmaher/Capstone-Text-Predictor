@@ -11,6 +11,7 @@ rm(list=ls())
 setwd("C:/RStudio/capstone/final/en_US")
 ## list all files in local directory
 list.files("C:/RStudio/capstone/final/en_US")
+
 ## read in twitter data
 readTwitter <- file("C:/RStudio/capstone/final/en_US/en_US.twitter.txt", "r")
 fullTwitter <- readLines(readTwitter,encoding="UTF-8",skipNul=TRUE, warn=FALSE)
@@ -31,9 +32,8 @@ stri_stats_general(fullTwitter)
 stri_stats_general(fullNews)
 stri_stats_general(fullBlogs)
 
-## sample 1000 lines from each dataset for analysis
+## sample 10% from each dataset for analysis
 set.seed(1234)
-
 # 10% sampling
 sampleTwitter <- sample(fullTwitter, (round(0.1*length(fullTwitter))))
 sampleNews <- sample(fullNews, (round(0.1*length(fullNews))))
@@ -54,10 +54,8 @@ sampleCorp <- tm_map(sampleCorp, content_transformer(removePunct))
 sampleCorp <- tm_map(sampleCorp, removeNumbers)# remove numbers
 sampleCorp <- tm_map(sampleCorp, content_transformer(function(x) iconv(enc2utf8(x), sub = "byte")))
 sampleCorp <- tm_map(sampleCorp, content_transformer(tolower), lazy = TRUE)
-##sampleCorp <- tm_map(sampleCorp, removeWords, stopwords("english"))#remove stopwords
-sampleCorp <- tm_map(sampleCorp, stripWhitespace)# remove whitespaces
-##sampleCorp <- tm_map(sampleCorp, stemDocument)
-removeURL <- function(x) gsub("http[[:alnum:]]*", "", x) 
+sampleCorp <- tm_map(sampleCorp, stripWhitespace)   ## remove whitespaces
+removeURL <- function(x) gsub("http[[:alnum:]]*", "", x)  ## remove urls
 sampleCorp <- tm_map(sampleCorp, content_transformer(removeURL))
 
 ## profanity removal
