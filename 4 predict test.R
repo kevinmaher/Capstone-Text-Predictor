@@ -7,7 +7,7 @@ require(stringr)
 load("allngrams.Rda")
 source("ngramsTokenizer.R")
 
-inputs <- "this is a text"
+inputs <- "Talking to your mom has the same effect as a hug and helps reduce your"
 
 cleanInput <- function(inputs) {
     
