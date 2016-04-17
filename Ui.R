@@ -25,7 +25,7 @@ shinyUI(
                          p("The data is from a corpus called HC Corpora (www.corpora.heliohost.org) and can be downloaded from the site below"),
                          a(href="https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip", "The Capstone Word Prediction Dataset"),
                          p("for details on the corpora available. The files have been language filtered but may still contain some foreign text."),
-                         p(" The data was sampled , cleaned and tokenised. In my case I've sampled 5% of the data from each of the three files."),
+                         p(" The data was sampled , cleaned and tokenised. In my case I've sampled 10% of the data from each of the three files."),
                          p("The data and the code for this product can be found at"),a(href= "https://github.com/kevinmaher/Capstone-Text-Predictor", "Data and Code")
                          
                 ),
