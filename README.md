@@ -8,3 +8,4 @@ The Word predictor Shiny App predicts the next word based on the last three word
  
  
   - The App can be tested on [shinyapps.io](https://kevmaher.shinyapps.io/project/)
+
